@@ -1,0 +1,32 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block metadescription %}
+   Search function
+{% endblock %}
+
+{% block title %}
+   Search 
+{% endblock %}
+
+{% block content %}
+  <div>
+     <p class="text-center my_search_text">
+       You have searched for <b>{{ query }}.</b>
+     </p> 
+  </div>
+
+  <div class="container">
+      <div class="row mx-auto"> 
+          {% for product in products.object_list %}
+              
+          
+          {% endfor %}
+
+      </div>
+  </div>
+
+
+{% endblock %}
+
+
+

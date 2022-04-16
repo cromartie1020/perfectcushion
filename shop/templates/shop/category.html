@@ -1,0 +1,93 @@
+{% extends 'shop/base.html' %} 
+{% load static %}
+{% block metadescription %} 
+{% if category %} 
+{{ category.description|truncatewords:155}} 
+{% else %}
+Welcome to the cushion store where you can buy comfy and awesome cushion. 
+{% endif %} 
+{% endblock %} 
+
+{% block title %} 
+{% if category %} 
+{{ category.name }} - Perfect Cushion Store 
+{% else %} 
+See Our Cushion Collection - Perfect Cushion Store 
+{% endif %} 
+{% endblock %}
+ 
+{% block content %} 
+{% if category %}
+<div class="row my_row_class">
+  <div class="mx-auto">
+    <p>
+      <a href="{% url 'shop:allProdCat' %}">
+        Our Product Collection | {{ category.name }}
+      </a>
+    </p>
+  </div>
+</div>
+{% endif %}
+
+<div class="mx-auto">
+{% if category %}
+  <img src="{{ category.image.url }}" alt="{{ category.name }}" />
+</div>
+<br />
+<div>
+  <h1 class="text-center my_title">{{ category.name }}</h1>
+  <p class="text-justify">{{ category.description }}</p>
+</div>
+{% else %}
+
+<div>
+  <img class='my_image my_image_padding'src="{% static 'shop/img/banner.jpg' %}" alt="Our Products Collection" />
+</div>
+<br />
+<div>
+  <h1 class="text-center my_title"> Our Products Collection </h1>
+  <p class="text-justify"> Lorem ipsum dolor sit amet consectetur     adipisicing elit.Dolorum numquam blanditiis incidunt voluptate ! Ab,
+    excepturi fuga ? Possimus aut sint laboriosam sapiente harum modi fuga,
+    dolores assumenda a quas veniam dolorem maiores quaerat soluta,
+    maxime minima earum laudantium recusandae tempora vel ad.Atque saepe iste illum alias ratione.Nostrum incidunt
+    veniam eligendi,
+    quo repudiandae dicta earum amet deserunt,
+    quia culpa magnam quidem laboriosam ! Tempora adipisci consequatur a,
+    error,
+    fuga impedit cum laborum amet voluptas itaque voluptatum provident.Doloribus sapiente dolorum quia voluptatem,
+    numquam distinctio optio animi a ducimus commodi excepturi,
+    at beatae cum debitis exercitationem sint nesciunt,
+    suscipit aperiam rerum adipisci !
+  </p>
+{% endif %}
+</div>
+
+<div class="container">
+  <div class="row mx-auto">
+    {% for product in products.object_list %}
+    <div class="my_bottom_margin col-9 col-sm-12 col-md-4 col-md-12 col-lg-4">
+      <div class="card text-center" style="min-width: 18rem;">
+        <a href="{{ product.get_url }}"><img class="card-image-top my_image"src="{{ product.image.url }}" alt="{{ product.name }}"></a>
+        <div class="card-body">
+          <h4>{{ product.name }}</h4>
+          <p>${{ product.price }}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="mx-auto">
+    {% if products.paginator.num_pages > 1 %}
+    <hr>
+    <div class="text-center">
+      {% for pg in products.paginator.page_range %}
+        <a href="?page={{pg}}" class="btn btn-light btn-sm {% if products.numer == pg %} active {% endif %} ">{{ pg }}</a>
+      {% endfor %}
+    </div>
+    {% else %}
+    {% endif %}
+  </div>
+  <br>
+</div>
+
+{% endblock %}
