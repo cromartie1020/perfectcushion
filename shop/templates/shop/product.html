@@ -34,7 +34,7 @@
                             <p class="my_product_text text-center"><b>Product is out of Stock!</b></p>
                         {% else %}
                            <div class="text-center">
-                            <a class="btn btn-secondary" href="">Add to Cart.</a>
+                            <a class="btn btn-secondary" href="{% url 'cart:add_cart' product.id %}">Add to Cart.</a>
                            </div> 
                         {% endif %}
                     </div>  

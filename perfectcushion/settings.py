@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'shop.apps.ShopConfig',
     'search_app.apps.SearchAppConfig',
+    'cart.apps.CartConfig',
 ]
 
 MIDDLEWARE = [
@@ -50,7 +51,7 @@ ROOT_URLCONF = 'perfectcushion.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'shop','templates/'),os.path.join(BASE_DIR,'search_app','templates/')],
+        'DIRS': [os.path.join(BASE_DIR,'shop','templates/'),os.path.join(BASE_DIR,'search_app','templates/'),os.path.join(BASE_DIR,'cart','templates/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

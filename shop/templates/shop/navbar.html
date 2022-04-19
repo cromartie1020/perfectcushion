@@ -24,7 +24,7 @@
         
         
       </ul>
-      <form class="form-inline my-2 my-lg-0" method="GET" action="">
+      <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'search_app:searchResult' %}">
         {% csrf_token %}
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
         <button class="btn btn-secondary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
